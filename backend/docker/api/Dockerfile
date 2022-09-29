@@ -9,12 +9,13 @@ COPY ./package.json ./
 COPY ./tsconfig.json ./
 
 RUN npm install -g typescript
+RUN npm install -g nodemon
 RUN npm install
 
 COPY ./src/ .
 
 RUN tsc
 
-CMD ["node", "src/dist/index.js"]
+CMD ["nodemon", "src/dist/index.js"]
 
 EXPOSE 3000
