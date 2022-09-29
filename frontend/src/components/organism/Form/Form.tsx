@@ -15,6 +15,14 @@ export const Form: FunctionComponent<IFormProps> = ({ type }) => {
     formState: { errors },
     handleSubmit,
   } = useForm();
+
+  /**
+   * TODO: Implement onSubmit function
+   * Get data from form and send it to the backend
+   * If the form is valid and the backend returns a 200 status code, the user is logged in
+   * and redirected to the dashboard
+   * @param data Object contain the data from the form
+   */
   const onSubmit: SubmitHandler<any> = (data: any) => console.log(data);
 
   return (
