@@ -1,0 +1,39 @@
+version: "3"
+services:
+  db:
+    build: ./docker/db
+    container_name: secret_santa_db
+    restart: always
+    environment:
+      DATABASE: ${DATABASE}
+      USER: ${USER_NAME}
+      PASSWORD: ${USER_PASSWORD}
+    ports:
+      - "3306:3306"
+    networks:
+      - backend-network
+
+  api:
+    build: ./docker/api
+    container_name: secret_santa_api
+    restart: always
+    ports:
+      - "8080:8080"
+    volumes:
+      - ./backend:/app
+    networks:
+      - backend-network
+      - frontend-network
+    depends_on:
+      - db
+
+  web:
+    build: ./docker/web
+    container_name: secret_santa_web
+    ports:
+      - "3000:3000"
+    # Only in development
+    volumes:
+      - ./frontend:/app
+    networks:
+      - frontend-network
