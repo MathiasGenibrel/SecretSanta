@@ -4,6 +4,6 @@ LABEL MAINTAINER="Genibrel Mathias <mathias.genibrel@livecampus.tech>"
 
 WORKDIR /database
 
-COPY ./init.sql .
+COPY ./docker/db/init.sql .
 
 EXPOSE 3306

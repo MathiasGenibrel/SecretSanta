@@ -1,26 +1,31 @@
-version: "3"
+version: "3.9"
 services:
   db:
-    build: ./backend/docker/db
+    build:
+      context: ./backend
+      dockerfile: ./docker/db/Dockerfile
     container_name: secret_santa_db
     restart: always
     environment:
-      DATABASE: ${DATABASE}
-      USER: ${USER_NAME}
-      PASSWORD: ${USER_PASSWORD}
+      MYSQL_DATABASE: ${DATABASE}
+      MYSQL_ALLOW_EMPTY_PASSWORD: "yes"
     ports:
-      - "3306:3306"
+      - "3307:3306"
     networks:
       - backend-network
 
   api:
-    build: ./backend/docker/api
+    build:
+      context: ./backend
+      dockerfile: ./docker/api/Dockerfile
     container_name: secret_santa_api
     restart: always
     ports:
-      - "8080:8080"
+      - "8080:3000"
     volumes:
       - ./backend:/app
+      - /app/node_modules
+      - /app/src/dist
     networks:
       - backend-network
       - frontend-network
@@ -28,12 +33,21 @@ services:
       - db
 
   web:
-    build: ./frontend/docker/web
+    build:
+      context: ./frontend
+      dockerfile: ./docker/web/Dockerfile
     container_name: secret_santa_web
     ports:
       - "3000:3000"
     # Only in development
     volumes:
       - ./frontend:/app
+      - /app/node_modules
     networks:
       - frontend-network
+
+networks:
+  frontend-network:
+    driver: bridge
+  backend-network:
+    driver: bridge

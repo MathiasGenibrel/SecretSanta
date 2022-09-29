@@ -5,13 +5,13 @@ LABEL MAINTAINER="Genibrel Mathias <mathias.genibrel@livecampus.tech>"
 
 WORKDIR /app
 
-COPY ./backend/package.json ./
-COPY ./backend/tsconfig.json ./
+COPY ./package.json ./
+COPY ./tsconfig.json ./
 
 RUN npm install -g typescript
 RUN npm install
 
-COPY ./backend/src/ .
+COPY ./src/ .
 
 RUN tsc
 
