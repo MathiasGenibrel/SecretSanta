@@ -4,7 +4,7 @@ LABEL MAINTAINER="Genibrel Mathias <mathias.genibrel@livecampus.tech>"
 
 WORKDIR /app
 
-COPY ./package.json ./
+COPY ./package.json .
 # COPY ./frontend/tsconfig.json ./
 
 # RUN npm install -g typescript
