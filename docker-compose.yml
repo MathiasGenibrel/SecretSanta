@@ -1,7 +1,7 @@
 version: "3"
 services:
   db:
-    build: ./docker/db
+    build: ./backend/docker/db
     container_name: secret_santa_db
     restart: always
     environment:
@@ -14,7 +14,7 @@ services:
       - backend-network
 
   api:
-    build: ./docker/api
+    build: ./backend/docker/api
     container_name: secret_santa_api
     restart: always
     ports:
@@ -28,7 +28,7 @@ services:
       - db
 
   web:
-    build: ./docker/web
+    build: ./frontend/docker/web
     container_name: secret_santa_web
     ports:
       - "3000:3000"
