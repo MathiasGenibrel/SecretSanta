@@ -1,7 +1,9 @@
-version: "3"
+version: "3.9"
 services:
   db:
-    build: ./backend/docker/db
+    build:
+      context: ./backend
+      dockerfile: ./docker/db/Dockerfile
     container_name: secret_santa_db
     restart: always
     environment:
@@ -9,12 +11,14 @@ services:
       USER: ${USER_NAME}
       PASSWORD: ${USER_PASSWORD}
     ports:
-      - "3306:3306"
+      - "3307:3306"
     networks:
       - backend-network
 
   api:
-    build: ./backend/docker/api
+    build:
+      context: ./backend
+      dockerfile: ./docker/api/Dockerfile
     container_name: secret_santa_api
     restart: always
     ports:
@@ -28,7 +32,9 @@ services:
       - db
 
   web:
-    build: ./frontend/docker/web
+    build:
+      context: ./frontend
+      dockerfile: ./docker/web/Dockerfile
     container_name: secret_santa_web
     ports:
       - "3000:3000"
@@ -37,3 +43,11 @@ services:
       - ./frontend:/app
     networks:
       - frontend-network
+
+networks:
+  frontend-network:
+    external: true
+    name: frontend-network
+  backend-network:
+    external: true
+    name: backend-network
