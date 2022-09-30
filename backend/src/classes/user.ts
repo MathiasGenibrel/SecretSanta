@@ -23,6 +23,8 @@ export class User {
         if(this.isValid()){
             addUser(this.#email,this.#mdp,this.#pseudo)
             return true
+        } else {
+            return false
         }
     }
 
