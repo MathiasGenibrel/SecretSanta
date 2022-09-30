@@ -1,6 +1,6 @@
 import React, { FunctionComponent } from "react";
 import { useForm, SubmitHandler } from "react-hook-form";
-import { NavigateFunction, NavLink, To } from "react-router-dom";
+import { NavLink, To } from "react-router-dom";
 
 // Import components
 import { Button } from "../../atoms/Button/Button";
@@ -11,10 +11,10 @@ import { FormContent } from "./FormContent/FormContent";
 
 interface IFormProps {
   type: "login" | "register";
-  navigate?: NavigateFunction;
+  title: string;
 }
 
-export const Form: FunctionComponent<IFormProps> = ({ type, navigate }) => {
+export const Form: FunctionComponent<IFormProps> = ({ type, title }) => {
   const {
     register,
     formState: { errors },
@@ -32,6 +32,7 @@ export const Form: FunctionComponent<IFormProps> = ({ type, navigate }) => {
 
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
+      <h2>{title}</h2>
       {FormContent[type].fields.map((field, index) => {
         return (
           <div key={index}>
@@ -45,7 +46,11 @@ export const Form: FunctionComponent<IFormProps> = ({ type, navigate }) => {
             >
               {field.label}
             </InputWithLabel>
-            {errors[field.name] && `${errors[field.name]?.message}`}
+            {errors[field.name] && (
+              <span className={"inputError"}>
+                {errors[field.name]?.message as string}
+              </span>
+            )}
           </div>
         );
       })}

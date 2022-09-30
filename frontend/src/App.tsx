@@ -5,7 +5,7 @@ import { Form } from "./components/organism/Form/Form";
 export const App = () => {
   return (
     <div className="App">
-      <Form type="login" />
+      <Form type="login" title="test" />
     </div>
   );
 };

@@ -1,9 +1,12 @@
 import React from "react";
 import { Form } from "../organism/Form/Form";
-import { useNavigate } from "react-router-dom";
+
+import "./ConnectionForm.css";
 
 export const Register = () => {
-  const navigate = useNavigate();
-
-  return <Form type="register" navigate={navigate} />;
+  return (
+    <section>
+      <Form type="register" title="Create an Account" />
+    </section>
+  );
 };

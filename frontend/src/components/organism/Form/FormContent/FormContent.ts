@@ -11,25 +11,3 @@ export const FormContent: IFormContentCase = {
   login: loginContent,
   register: registerContent,
 };
-
-// Fields for register form
-// fields: [
-//   {
-//     label: "Username :",
-//     id: "username",
-//     name: "username",
-//     type: EInputType.text,
-//   },
-//   {
-//     label: "Email :",
-//     id: "email",
-//     name: "email",
-//     type: EInputType.email,
-//   },
-//   {
-//     label: "Password :",
-//     id: "password",
-//     name: "password",
-//     type: EInputType.password,
-//   },
-// ],
