@@ -1,9 +1,32 @@
 import express, { Request, Response } from "express";
+import { User } from "./classes/user";
+import { IUser } from "./interfaces/user";
+import { getAllUsers, getConnect } from "./model/user";
 
 const app = express();
 
 app.get("/", (_req: Request, res: Response) => {
-  res.send("Hello World");
+  getAllUsers().then((data:any) => {
+    let users:IUser[] = [...data]
+    res.send(users);
+  })
+
+});
+
+app.get("/register", (_req: Request, res: Response) => {
+  let newUser = new User('co@gmail.com','azerty','co')
+  newUser.create()
+  res.send('done');
+});
+
+app.get("/connexion", (req: Request, res: Response) => {
+  getConnect(req.body.login,req.body.password).then((data:any) =>{
+    if (data){
+      res.send('connect');
+    } else {
+      res.send('no connect'); 
+    }
+  })
 });
 
 app.listen(3000, () => {
