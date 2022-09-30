@@ -32,7 +32,7 @@ export function getConnect(login: string, mdp: string) {
 
 export function getByEmail(email: string) {
     return new Promise((result, reject) => {
-        con.query("SELECT id,email,pseudo FROM users WHERE email=?", [email], (err:QueryError, data:RowDataPacket) => {
+        con.query("SELECT count(email) as nb FROM users WHERE email=?", [email], (err:QueryError, data:RowDataPacket) => {
             if (err) reject(err)
             else result(data[0])
         })

@@ -14,8 +14,9 @@ app.get("/", (_req: Request, res: Response) => {
 });
 
 app.get("/register", (_req: Request, res: Response) => {
-  let newUser = new User('co@gmail.com','azerty','co')
-  newUser.create()
+  let newUser = new User('valenti@hotmail.fr','azerty','co')
+  newUser.isExist()
+  // newUser.create()
   res.send('done');
 });
 
