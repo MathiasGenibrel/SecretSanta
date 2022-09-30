@@ -1,6 +1,6 @@
 export interface IButtonProps {
-  onClick?: () => void;
   children: JSX.Element | string | (JSX.Element | string)[];
+  onClick?: () => void;
   type?: EButton;
 }
 
