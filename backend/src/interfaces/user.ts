@@ -4,3 +4,4 @@ export interface IUser {
     password:string
     pseudo:string
 }
+export default IUser;

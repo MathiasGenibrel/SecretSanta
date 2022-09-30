@@ -1,16 +1,19 @@
 import express, { Request, Response } from "express";
 import { User } from "./classes/user";
-import { IUser } from "./interfaces/user";
+import { environment } from "./environment/environment";
+import  IUser from "./interfaces/user";
 import { getAllUsers, getConnect } from "./model/user";
+
+const jwt = require('jsonwebtoken')
+
 
 const app = express();
 
 app.get("/", (_req: Request, res: Response) => {
   getAllUsers().then((data:any) => {
     let users:IUser[] = [...data]
-    res.send(users);
+    res.send(data);
   })
-
 });
 
 app.get("/register", (_req: Request, res: Response) => {
@@ -20,12 +23,13 @@ app.get("/register", (_req: Request, res: Response) => {
   res.send('done');
 });
 
-app.get("/connexion", (req: Request, res: Response) => {
-  getConnect(req.body.login,req.body.password).then((data:any) =>{
+app.get("/login", (_req: Request, res: Response) => {
+  getConnect('nicolas@allforweb.fr','azerty').then((data:any) =>{
     if (data){
-      res.send('connect');
-    } else {
-      res.send('no connect'); 
+      const token = jwt.sign({ user: data}, environment.secretToken);
+      res.json(token);
+      /* const decoded = jwt.verify(token, environment.secretToken);
+      console.log(decoded)*/
     }
   })
 });

@@ -22,6 +22,7 @@ export class User {
     create(){
         if(this.isValid()){
             addUser(this.#email,this.#mdp,this.#pseudo)
+            return true
         }
     }
 
