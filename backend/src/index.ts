@@ -3,6 +3,7 @@ import { User } from "./classes/user";
 import { environment } from "./environment/environment";
 import  IUser from "./interfaces/user";
 import { getAllUsers, getConnect } from "./model/user";
+import  mysql  from "mysql2";
 
 const jwt = require('jsonwebtoken')
 
@@ -38,7 +39,7 @@ app.post("/login", (req: Request, res: Response) => {
   getConnect(req.body.email,req.body.password).then((data:any) =>{
     if (data){
       const token = jwt.sign({username: data.pseudo, email: data.email, id: data.id }, environment.secretToken);
-      res.json(token);
+      res.json({token :token,username: data.pseudo,id: data.id });
     }
   })
 });
