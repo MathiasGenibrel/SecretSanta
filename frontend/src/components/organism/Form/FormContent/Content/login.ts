@@ -1,3 +1,4 @@
+// Import interfaces
 import { EButton } from "../../../../atoms/Button/Button.types";
 import { EInputType } from "../../../../atoms/Input/Input.types";
 import { IFormContent } from "../FormContent.types";
@@ -16,7 +17,7 @@ export const loginContent: IFormContent = {
         required: "Email is required",
         pattern: {
           value: /^[\w-.]+@([\w-]+\.)+[\w-]{2,}$/g, // email regex from "https://regexr.com/3e48o" (edited)}
-          message: "Email is not valid",
+          message: "Email is not valid, see this example : john@example.com",
         },
       },
     },
