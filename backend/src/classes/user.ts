@@ -47,10 +47,10 @@ export class User {
 
     async isExist (){
         let emailValue = await getByEmail(this.#email) as any
-        if ( emailValue?.nb === 1 ) {
-            return false
-        } else {
+        if ( emailValue[0].nb === 1 ) {
             return true
+        } else {
+            return false
         }
     }
 }
