@@ -1,6 +1,10 @@
 import express, { Request, Response } from "express";
+import { Event } from "./classes/event";
 import { User } from "./classes/user";
 import { environment } from "./environment/environment";
+import  IUser from "./interfaces/user";
+import { addEvent } from "./model/event";
+import { getAll } from "./model/listEvents";
 import { getAllUsers, getConnect } from "./model/user";
 
 const jwt = require('jsonwebtoken')
@@ -12,6 +16,8 @@ app.use(express.json());
 app.get("/", (_req: Request, res: Response) => {
   res.send('/');
 });
+
+
 
 app.get("/register", (_req: Request, res: Response) => {
   res.send('register');
@@ -49,6 +55,24 @@ app.post("/login", (req: Request, res: Response) => {
       return res.status(401).json({ message: "Invalid credentials" });
     }
   })
+});
+
+app.get("/events", (_req: Request, res: Response) => {
+  getAll().then((data:any) => {
+   res.json(data)
+  })
+});
+
+app.get("/addevent", (_req: Request, res: Response) => {
+  const newEvent = new Event( {
+    name : "Ouaw",
+    maxPrice : 100,
+    startDate : "2030-11-01",
+    endDate : "2030-11-01",
+    id_owner : 2
+})
+  newEvent.addEvent()
+  res.send('done')
 });
 
 

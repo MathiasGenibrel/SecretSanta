@@ -1,0 +1,32 @@
+{   "Events" : [
+
+    {   "id" : "1"
+    ,"name" : "secretSantaAmis"
+    ,"maxPrice" : "30"
+    ,"startDate" : "29/09/2022"
+    ,"endDate" : "30/09/2022"
+    ,"id_owner" : "2"
+    }
+
+   ,
+{
+    "id" : "2"
+    ,"name" : "secretSantaFamille"
+    ,"maxPrice" : "2000000000000000000"
+    ,"startDate" : "29/09/2022"
+    ,"endDate" : "10/10/2022"
+    ,"id_owner" : "5"
+}
+,
+{
+    "id" : "3"
+    ,"name" : ""
+    ,"maxPrice" : "200"
+    ,"startDate" : "29/09/2022"
+    ,"endDate" : "10/10/2022"
+    ,"id_owner" : "5"
+}
+    ]
+
+    
+}
