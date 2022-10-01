@@ -5,16 +5,17 @@ LABEL MAINTAINER="Genibrel Mathias <mathias.genibrel@livecampus.tech>"
 
 WORKDIR /app
 
-COPY ./backend/package.json ./
-COPY ./backend/tsconfig.json ./
+COPY ./package.json ./
+COPY ./tsconfig.json ./
 
 RUN npm install -g typescript
+RUN npm install -g nodemon
 RUN npm install
 
-COPY ./backend/src/ .
+COPY ./src/ .
 
 RUN tsc
 
-CMD ["node", "src/dist/index.js"]
+CMD ["nodemon", "src/dist/index.js"]
 
 EXPOSE 3000
