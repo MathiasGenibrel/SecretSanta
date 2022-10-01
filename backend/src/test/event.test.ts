@@ -9,7 +9,7 @@ import { modifEvent } from "../model/event";
 
 
 
-
+// zone de test de la fonction addEvent
 describe("addEvent", () => {
     test("Creation d'un event qui fonctionne",() => {
         const event = new Event( {
@@ -52,7 +52,7 @@ describe("addEvent", () => {
         })
 });
 
-
+// zone de test de la fonction modifEvent
 describe("modifEvent", () => {
     test("modification d''un event, tout les champs sont renseigné",() => {
         const event = new Event( {
@@ -96,7 +96,7 @@ describe("modifEvent", () => {
 
 });
 
-
+// zone de test de la fonction suppEvent
 describe("suppEvent", () => {
     test("supprime un event vue qu'il existe",() => {
         const event = new Event( {
@@ -107,16 +107,15 @@ describe("suppEvent", () => {
             endDate : Events[0].endDate,
             id_owner : parseInt(Events[0].id_owner)      
         });
-        event.eventExist().then((data : any) => {
-            expect(data).toBe(true);
-        })
+        expect(event.suppEvent()).toBe(true);
+        
     });
 });
 
-
+// zone de test des get de la classe event
 describe("getClasseEvent", () => {
 
-    test("test du get it de la classe event",() => {
+    test("test du get id de la classe event",() => {
    const event = new Event( {
     id : parseInt(Events[0].id),
     name : Events[1].name,
@@ -130,7 +129,7 @@ describe("getClasseEvent", () => {
     expect(event.id).toBe( parseInt(Events[0].id));
    });
 
-   test("test du get it de la classe event",() => {
+   test("test du get name de la classe event",() => {
         const event = new Event( {
             id : parseInt(Events[0].id),
             name : Events[1].name,
@@ -143,7 +142,7 @@ describe("getClasseEvent", () => {
         expect(event.name).toBe(Events[1].name);
     });
 
-    test("test du get it de la classe event",() => {
+    test("test du get maxPrice de la classe event",() => {
         const event = new Event( {
          id : parseInt(Events[0].id),
          name : Events[1].name,
@@ -158,7 +157,7 @@ describe("getClasseEvent", () => {
     });
 
         
-    test("test du get it de la classe event",() => {
+    test("test du get startDate de la classe event",() => {
         const event = new Event( {
          id : parseInt(Events[0].id),
          name : Events[1].name,
@@ -172,7 +171,7 @@ describe("getClasseEvent", () => {
          expect(event.startDate).toBe(Events[1].startDate);
         });
 
-    test("test du get it de la classe event",() => {
+    test("test du get enDate de la classe event",() => {
         const event = new Event( {
             id : parseInt(Events[0].id),
             name : Events[1].name,
@@ -186,7 +185,7 @@ describe("getClasseEvent", () => {
         expect(event.endDate).toBe(Events[1].endDate);
     });
 
-    test("test du get it de la classe event",() => {
+    test("test du get id_owner de la classe event",() => {
         const event = new Event( {
             id : parseInt(Events[0].id),
             name : Events[1].name,
@@ -197,7 +196,7 @@ describe("getClasseEvent", () => {
             
             });
         
-        expect(event.suppEvent()).toBe(true);
+            expect(event.id_owner).toBe(parseInt(Events[1].id_owner));
     });
 });
 
