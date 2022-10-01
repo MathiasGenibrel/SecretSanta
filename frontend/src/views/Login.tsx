@@ -11,6 +11,7 @@ import AuthContext from "../context/auth-context";
 
 // Import auth
 import { auth } from "../helpers/auth";
+import { ILoginBody } from "../interface/api/auth";
 
 // TODO: Change path of auth function (in submitHandler)
 export const Login = () => {
@@ -21,7 +22,7 @@ export const Login = () => {
       <Form
         type="login"
         title="Connect to your Account"
-        submitHandler={(data) => auth(data, "users/1", user)}
+        submitHandler={(data: ILoginBody) => auth(data, "login", user)}
       />
     </section>
   );

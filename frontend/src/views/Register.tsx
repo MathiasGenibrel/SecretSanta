@@ -7,6 +7,9 @@ import AuthContext from "../context/auth-context";
 import { auth } from "../helpers/auth";
 import { Form } from "../components/organism/Form/Form";
 
+// Import interfaces
+import { IRegisterBody } from "../interface/api/auth";
+
 import "./ConnectionForm.css";
 
 // TODO: Change path of auth function (in submitHandler)
@@ -17,7 +20,7 @@ export const Register = () => {
       <Form
         type="register"
         title="Create an Account"
-        submitHandler={(data) => auth(data, "users/1", user)}
+        submitHandler={(data: IRegisterBody) => auth(data, "register", user)}
       />
     </section>
   );
