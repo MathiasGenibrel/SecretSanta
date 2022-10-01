@@ -1,14 +1,13 @@
 import express, { Request, Response } from "express";
 import { User } from "./classes/user";
 import { environment } from "./environment/environment";
-import  IUser from "./interfaces/user";
 import { getAllUsers, getConnect } from "./model/user";
-import  mysql  from "mysql2";
 
 const jwt = require('jsonwebtoken')
 
 
 const app = express();
+app.use(express.json());
 
 app.get("/", (_req: Request, res: Response) => {
   /*getAllUsers().then((data:any) => {
@@ -37,7 +36,7 @@ app.post("/login", (req: Request, res: Response) => {
   getConnect(req.body.email,req.body.password).then((data:any) =>{
     if (data){
       const token = jwt.sign({username: data.pseudo, email: data.email, id: data.id }, environment.secretToken);
-      res.json({token :token,username: data.pseudo,id: data.id });
+      res.json({token :token,id: data[0].id,username: data[0].pseudo });
       /* const decoded = jwt.verify(token, environment.secretToken);
       console.log(decoded)*/
     }
