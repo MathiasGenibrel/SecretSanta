@@ -8,17 +8,10 @@ const event = require ('./classes/event');
 
 const app = express();
 
-app.get("/", (_req: Request, res: Response) => {
+app.get("/events", (_req: Request, res: Response) => {
   getAll().then((data:any) => {
-   res.send(data)
+   res.json(data)
 })
-
-  let a = new Event('TNicolasAPasBcpDormit',200,'2022-09-09','2022-10-10',1)
-  a.eventValid()
-
-  // suppEvent(15)
-
-  // modifEvent('MathiasTropPaye', 50000, 1, 1)
 
 });
 

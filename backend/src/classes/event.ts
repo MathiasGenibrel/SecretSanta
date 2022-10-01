@@ -1,21 +1,28 @@
-import { addEvent, modifEvent} from "../model/event";
+import { IEventConfig } from "../interfaces/event";
+import { addEvent, getEventById, modifEvent, suppEvent} from "../model/event";
+
 
 export class Event {
 
-
+    #id? : number;
     #name: string ;
     #maxPrice : number;
     #startDate : string;
     #endDate : string;
     #id_owner : number;
-    constructor ( name: string, maxPrice: number, startDate: string, endDate: string, id_owner: number) {
+    static addEvent: any;
+    constructor (data : IEventConfig ) {
 
-        this.#name = name
-        this.#maxPrice = maxPrice
-        this.#startDate = startDate
-        this.#endDate = endDate
-        this.#id_owner = id_owner
+        this. #id = data.id
+        this.#name = data.name
+        this.#maxPrice = data.maxPrice
+        this.#startDate = data.startDate
+        this.#endDate = data.endDate
+        this.#id_owner = data.id_owner
 
+    }
+    get id() {
+        return this.#id
     }
     get name() {
         return this.#name
@@ -33,26 +40,61 @@ export class Event {
         return this.#id_owner
     }
 
-    eventValid(){
-        let verif = false;
-        if(!(this.#name == "" || this.#name == null)){
-            if((this.#maxPrice < 1000)) {
-                verif = true
-            }
-        }
 
-        if(verif){ 
+    // On teste si le name est différent de null ou n'est pas vide et si le prix ne dépasse pas plus de 1000
+    eventValid(){
+        if(this.#name ){
+            if((this.#maxPrice < 1000)) { 
+                return;
+            } else {
+                throw "prix trop élevé";
+            }
+        }   else {
+            throw "Nom invalide ou ne peux pas être null";
+        }   
+    }
+
+    addEvent(){
+        try {
+            this.eventValid()
             addEvent(this.#name, this.#maxPrice, this.#startDate, this.#endDate, this.#id_owner)
-        } else  {
-            console.log("Nom invalide et prix trop haut !")
+        } catch (error) {
+            throw error
         }
     }
 
 
-    // addEvent() {
-    //     addEvent(this.#name, this.#maxPrice, this.#startDate, this.#endDate, this.#id_owner)
-    // }
+    modifEvent(){
+        try {
+            this.eventValid()
+            modifEvent(this.#name, this.#maxPrice, this.#id as any, this.#id_owner)
+        } catch (error) {
+            throw error
+        }
 
+    }
+
+
+    async eventExist() {
+        let eventValue = await getEventById(this.#id as any) as any 
+        if (eventValue[0].nb === 1) {
+            return true
+        } else {
+            return false
+        }
+    }
+
+    suppEvent (){
+        try {
+            this.eventExist()
+            suppEvent(this.#id as any)
+        } catch(error) {
+            throw error
+        }
+    }
     
-
 }
+
+
+
+export default addEvent
