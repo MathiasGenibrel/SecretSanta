@@ -1,5 +1,7 @@
 import { RegisterOptions } from "react-hook-form";
 import { NavigateProps } from "react-router-dom";
+
+// Import interfaces
 import { IButtonProps } from "../../../atoms/Button/Button.types";
 import { EInputType } from "../../../atoms/Input/Input.types";
 
