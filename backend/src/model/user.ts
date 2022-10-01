@@ -38,3 +38,12 @@ export function getByEmail(email: string) {
         })
     })
 }
+
+export function suppUser(id: number) {
+    return new Promise((result, rej) => {
+        con.query("DELETE FROM users WHERE id=?", [id], (err: any, res: any) => {
+            if (err) rej(err)
+            else result(res)
+        })
+    })
+}

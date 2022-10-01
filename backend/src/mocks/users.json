@@ -1,6 +1,7 @@
 { "Users" : 
     [
-        { "id" : "1","email":"nicolas@gmail.com","password":"azerty","pseudo":"Nyckolaxx"},
-        { "id" : "2","email":"Pendragon@gmail.com","password":"azerty","pseudo":"Arthur"}
+        { "id" : "1","email":"Valentin@gmail.com","password":"azerty","pseudo":"Valentin"},
+        { "id" : "2","email":"nicolasallforweb.fr","password":"azerty","pseudo":"Arthur"},
+        { "id" : "3","email":"nicolas@allforweb.fr","password":"azerty","pseudo":"Arthur"}
     ]
 }

@@ -1,11 +1,13 @@
-import { addUser, getByEmail } from "../model/user"
+import { addUser, getByEmail, suppUser } from "../model/user"
 
 export class User {
+    #id?:number
     #email:string
     #mdp:string
     #pseudo:string
 
-    constructor(email:string,mdp:string,pseudo:string){
+    constructor(email:string,mdp:string,pseudo:string,id?:number ){
+        this.#id = id
         this.#email = email
         this.#mdp = mdp
         this.#pseudo = pseudo
@@ -13,6 +15,10 @@ export class User {
 
     get Email() {
         return this.#email
+    }
+
+    get id() {
+        return this.#id
     }
 
     get pseudo() {
@@ -52,5 +58,10 @@ export class User {
         } else {
             return false
         }
+    }
+
+    suppUser(){
+        suppUser(this.#id as any)
+        return true
     }
 }
