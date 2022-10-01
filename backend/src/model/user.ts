@@ -1,6 +1,7 @@
 import { QueryError, RowDataPacket } from "mysql2"
 import { con } from "./conn"
 
+// Requete qui récupére tout les utilisateurs.
 export function getAllUsers() {
     return new Promise((result, reject) => {
         con.query("SELECT * FROM users ", (err:QueryError, data:RowDataPacket) => {
@@ -10,6 +11,7 @@ export function getAllUsers() {
     })
 }
 
+// Requete qui ajoute un utilisateur
 export function addUser(email: string,mdp: string,pseudo: string) {
     return new Promise((result, reject) => {
         con.query("INSERT INTO users (email,password,pseudo) VALUES (?,?,?)", [
@@ -21,6 +23,7 @@ export function addUser(email: string,mdp: string,pseudo: string) {
     })
 }
 
+// Requete qui récupére les informations de l'utilisateur lors de la connection.
 export function getConnect(login: string, mdp: string) {
     return new Promise((result, reject) => {
         con.query("SELECT * FROM users WHERE email=? AND password=?", [login,mdp], (err, data) => {
@@ -30,6 +33,7 @@ export function getConnect(login: string, mdp: string) {
     })
 }
 
+// Requete récupération d'un utilisateur par son email.
 export function getByEmail(email: string) {
     return new Promise((result, reject) => {
         con.query("SELECT count(email) as nb FROM users WHERE email=?", [email], (err, data) => {
@@ -39,6 +43,7 @@ export function getByEmail(email: string) {
     })
 }
 
+// Requete qui supprime un utilisateur par son ID.
 export function suppUser(id: number) {
     return new Promise((result, rej) => {
         con.query("DELETE FROM users WHERE id=?", [id], (err: any, res: any) => {

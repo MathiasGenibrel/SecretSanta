@@ -3,6 +3,7 @@ import { environment } from "../environment/environment"
 import  mysql  from "mysql2";
 import { getConnect } from "./user";
 
+// Creation d'une connection à notre base de données. 
 const getConnection:mysql.Connection | any = ()=>{
     try{
         const con = mysql.createConnection({

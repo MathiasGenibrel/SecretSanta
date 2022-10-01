@@ -1,5 +1,7 @@
 import * as dotenv from 'dotenv';
 dotenv.config({debug:true,path:"/app/src/environment/.env"})
+
+// On récupere nos variable environnement contenu dans notre .env
 export const environment = {
     secretToken: process.env.SECRET_TOKEN ?? "unknown",
     database: {

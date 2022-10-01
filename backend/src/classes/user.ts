@@ -25,10 +25,11 @@ export class User {
         return this.#pseudo
     }
 
-    // Creation d'un utilisateur
+    // Creation d'un utilisateur.
     create(){
-        // Vérification si les conditions pour créer un utilisateur est correct
+        // Vérification si les conditions pour créer un utilisateur est correct.
         if(this.isValid()){
+            // Requete SQL qui ajoute un utilisateur dans la BDD.
             addUser(this.#email,this.#mdp,this.#pseudo)
             return true
         } else {
@@ -36,6 +37,7 @@ export class User {
         }
     }
 
+    // Fonction qui test si un utilisateur est valide.
     isValid(){
         let erreurs:string[]
 
@@ -44,6 +46,7 @@ export class User {
         }
         return this.mailIsValid(this.#email)
     }
+    // Fonction qui retourne un boolean si l'émail est correct.
     mailIsValid(email:string){
         let regex = new RegExp('[a-z0-9]+@[a-z]+\.[a-z]{2,}');
         let check = false;
@@ -53,6 +56,7 @@ export class User {
         return check
     }
 
+    // Fonction qui nous informe si un compte à déjà un email existant.
     async isExist (){
         let emailValue = await getByEmail(this.#email) as any
         if ( emailValue[0].nb === 1 ) {
@@ -62,6 +66,7 @@ export class User {
         }
     }
 
+    // Fonction qui supprime l'utilisateur
     suppUser(){
         suppUser(this.#id as any)
         return true

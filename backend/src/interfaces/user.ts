@@ -1,3 +1,4 @@
+// Interface pour un utilisateur
 export interface IUser {
     id?:number
     email:string
