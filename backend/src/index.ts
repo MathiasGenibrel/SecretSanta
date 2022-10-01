@@ -1,4 +1,4 @@
-import express, { Request, Response } from "express";
+import express, { NextFunction, Request, Response } from "express";
 import { Event } from "./classes/event";
 import { User } from "./classes/user";
 import { environment } from "./environment/environment";
@@ -12,6 +12,14 @@ const jwt = require('jsonwebtoken')
 
 const app = express();
 app.use(express.json());
+app.use((_req: Request, res: Response, next: NextFunction) => {
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header(
+    "Access-Control-Allow-Headers",
+    "Origin, X-Requested-With, Content-Type, Accept, Authorization"
+  );
+  next();
+});
 
 app.get("/", (_req: Request, res: Response) => {
   getAllUsers().then((data:any)=>{
@@ -27,7 +35,7 @@ app.get("/register", (_req: Request, res: Response) => {
 });
 
 app.post("/register", (req: Request, res: Response) => {
-  let newUser = new User(req.body.email,req.body.password,req.body.pseudo)
+  let newUser = new User(req.body.email,req.body.password,req.body.username)
   newUser.isExist().then((data:any)=>{
     if(data){
       return res.status(401).json({ message: "Compte already exist" });
