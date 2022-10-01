@@ -14,7 +14,7 @@ export function addUser(email: string,mdp: string,pseudo: string) {
     return new Promise((result, reject) => {
         con.query("INSERT INTO users (email,password,pseudo) VALUES (?,?,?)", [
             email, mdp, pseudo
-        ], (err: QueryError, res: RowDataPacket) => {
+        ], (err, res) => {
             if (err) reject(err)
             else result(res)
         })
@@ -23,18 +23,18 @@ export function addUser(email: string,mdp: string,pseudo: string) {
 
 export function getConnect(login: string, mdp: string) {
     return new Promise((result, reject) => {
-        con.query("SELECT * FROM users WHERE email=? AND password=?", [login,mdp], (err:QueryError, data:RowDataPacket) => {
+        con.query("SELECT * FROM users WHERE email=? AND password=?", [login,mdp], (err, data) => {
             if (err) reject(err)
-            else result(data[0])
+            else result(data)
         })
     })
 }
 
 export function getByEmail(email: string) {
     return new Promise((result, reject) => {
-        con.query("SELECT count(email) as nb FROM users WHERE email=?", [email], (err:QueryError, data:RowDataPacket) => {
+        con.query("SELECT count(email) as nb FROM users WHERE email=?", [email], (err, data) => {
             if (err) reject(err)
-            else result(data[0])
+            else result(data)
         })
     })
 }

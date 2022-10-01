@@ -1,9 +1,11 @@
-export const mysql = require('mysql2')
+import { environment } from "../environment/environment"
+
+import  mysql  from "mysql2";
 
 export const con = mysql.createConnection({
-    host: "172.18.0.1",
-    user: "root",
-    password: "",
-    database: "secretsanta",
-    port:3307
+    host: environment.database.hostname,
+    user: environment.database.user,
+    password: environment.database.password,
+    database: environment.database.database,
+    port: parseInt(environment.database.port)
 })

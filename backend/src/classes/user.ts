@@ -45,19 +45,12 @@ export class User {
         return check
     }
 
-// TEST SUR IS EXIST
     async isExist (){
-        let verif = false;
         let emailValue = await getByEmail(this.#email) as any
-        // console.log(this.#email)
-        // console.log(emailValue)
         if ( emailValue?.nb === 1 ) {
-            // console.log(emailValue)
-            // return false
-                console.log("pas bon")
+            return false
         } else {
-            // return  true
-            console.log("c bon")
+            return true
         }
     }
 }
