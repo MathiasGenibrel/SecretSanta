@@ -2,6 +2,7 @@ import express, { Request, Response } from "express";
 import { User } from "./classes/user";
 import { environment } from "./environment/environment";
 import  IUser from "./interfaces/user";
+import { getAll } from "./model/listEvents";
 import { getAllUsers, getConnect } from "./model/user";
 
 const jwt = require('jsonwebtoken')
@@ -15,6 +16,8 @@ app.get("/", (_req: Request, res: Response) => {
     res.send(data);
   })
 });
+
+
 
 app.get("/register", (_req: Request, res: Response) => {
   res.send('register');
@@ -39,6 +42,11 @@ app.post("/login", (req: Request, res: Response) => {
     }
   })
 });
+
+app.get("/events", (_req: Request, res: Response) => {
+  getAll().then((data:any) => {
+   res.json(data)
+})
 
 
 app.listen(3000, () => {
