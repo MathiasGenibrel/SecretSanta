@@ -62,8 +62,10 @@ docker compose exec -i db mysql secretsanta < secretSanta.sql
 Comptes pour se connecter à l'application
 
 Login / Mot de passe  :
-    - Admin@liveCampus.fr / Livecampus2022.fr                                 
-      - Mathias@liveCampus.fr / Livecampus2022.fr
-      - Valentin@liveCampus.fr / Livecampus2022.fr                    
-      - Nicolas@liveCampus.fr / Livecampus2022.fr                    
+```
+- Admin@liveCampus.fr / Livecampus2022.fr                                 
+- Mathias@liveCampus.fr / Livecampus2022.fr
+- Valentin@liveCampus.fr / Livecampus2022.fr                    
+- Nicolas@liveCampus.fr / Livecampus2022.fr   
+```                 
                          
