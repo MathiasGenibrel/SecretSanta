@@ -13,7 +13,7 @@ export class Event {
     static addEvent: any;
     constructor (data : IEventConfig ) {
 
-        this. #id = data.id
+        this.#id = data.id
         this.#name = data.name
         this.#maxPrice = data.maxPrice
         this.#startDate = data.startDate

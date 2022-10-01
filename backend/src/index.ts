@@ -1,7 +1,9 @@
 import express, { Request, Response } from "express";
+import { Event } from "./classes/event";
 import { User } from "./classes/user";
 import { environment } from "./environment/environment";
 import  IUser from "./interfaces/user";
+import { addEvent } from "./model/event";
 import { getAll } from "./model/listEvents";
 import { getAllUsers, getConnect } from "./model/user";
 
@@ -46,7 +48,19 @@ app.post("/login", (req: Request, res: Response) => {
 app.get("/events", (_req: Request, res: Response) => {
   getAll().then((data:any) => {
    res.json(data)
+  })
+});
+
+app.get("/addevent", (_req: Request, res: Response) => {
+  const newEvent = new Event( {
+    name : "Ouaw",
+    maxPrice : 100,
+    startDate : "2030-11-01",
+    endDate : "2030-11-01",
+    id_owner : 2
 })
+  newEvent.addEvent()
+  res.send('done')
 });
 
 
