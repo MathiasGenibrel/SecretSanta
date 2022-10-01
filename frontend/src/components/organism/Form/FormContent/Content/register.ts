@@ -61,7 +61,7 @@ export const registerContent: IFormContent = {
     },
   ],
   link: {
-    text: "You have an account ?",
+    text: "Already have an account ?",
     to: "/login",
   },
 };
