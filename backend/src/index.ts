@@ -24,7 +24,7 @@ app.get("/register", (_req: Request, res: Response) => {
 app.post("/register", (req: Request, res: Response) => {
   let newUser = new User(req.body.email,req.body.password,req.body.pseudo)
   newUser.isExist()
-  // newUser.create()
+  newUser.create()
   res.send('register');
 });
 
@@ -34,11 +34,11 @@ app.get("/login", (_req: Request, res: Response) => {
 
 app.post("/login", (req: Request, res: Response) => {
   getConnect(req.body.email,req.body.password).then((data:any) =>{
-    if (data){
+    if (data && data.length > 0){
       const token = jwt.sign({username: data.pseudo, email: data.email, id: data.id }, environment.secretToken);
-      res.json({token :token,id: data[0].id,username: data[0].pseudo });
-      /* const decoded = jwt.verify(token, environment.secretToken);
-      console.log(decoded)*/
+      return res.json({token :token,id: data[0].id,username: data[0].pseudo });
+    } else {
+      return res.status(401).json({ message: "Invalid credentials" });
     }
   })
 });
