@@ -1,11 +1,14 @@
 import React, { useContext } from "react";
 
 // Import context
-import AuthContext from "../../context/auth-context";
+import AuthContext from "../context/auth-context";
 
 // Import components
-import { auth } from "../../helpers/auth";
-import { Form } from "../organism/Form/Form";
+import { auth } from "../helpers/auth";
+import { Form } from "../components/organism/Form/Form";
+
+// Import interfaces
+import { IRegisterBody } from "../interface/api/auth";
 
 import "./ConnectionForm.css";
 
@@ -17,7 +20,7 @@ export const Register = () => {
       <Form
         type="register"
         title="Create an Account"
-        submitHandler={(data) => auth(data, "users/1", user)}
+        submitHandler={(data: IRegisterBody) => auth(data, "register", user)}
       />
     </section>
   );

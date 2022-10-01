@@ -1,16 +1,19 @@
-import { IAuthContext } from "../context/auth-context.types";
 import {
   IAuthResponse,
   ILoginBody,
   IRegisterBody,
 } from "../interface/api/auth";
+import { TAuth } from "./auth.types";
 
-export const auth = async (
-  data: ILoginBody | IRegisterBody,
-  path: string,
-  context: IAuthContext
-) => {
-  const userData = await context.fetcher.get<IAuthResponse>(path);
+export const auth: TAuth = async (data, path, context) => {
+  try {
+    const userData = await context.fetcher.post<
+      IAuthResponse,
+      IRegisterBody | ILoginBody
+    >(path, data);
 
-  context.setUser(userData);
+    context.setUser(userData);
+  } catch (error) {
+    console.log(error);
+  }
 };
