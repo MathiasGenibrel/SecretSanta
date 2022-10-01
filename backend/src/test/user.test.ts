@@ -31,6 +31,16 @@ describe("User valide", () => {
     expect(user.Email).toBe(Users[0].email);
   });
 
+  test("GET user pseudo", () => {
+    const user = new User(Users[0].email,Users[0].password,Users[0].pseudo)
+    expect(user.pseudo).toBe(Users[0].pseudo);
+  });
+
+  test("GET user id", () => {
+    const user = new User(Users[0].email,Users[0].password,Users[0].pseudo,parseInt(Users[0].id))
+    expect(user.id).toBe(parseInt(Users[0].id));
+  });
+
 });
 
 describe("User not valide", () => {
