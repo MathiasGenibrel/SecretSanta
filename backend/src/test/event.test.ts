@@ -94,20 +94,111 @@ describe("modifEvent", () => {
         expect(()=>event.eventValid()).toThrow("Nom invalide ou ne peux pas être null");
         })
 
-
-
-
-        describe("suppEvent", () => {
-            test("supprime un event vue qu'il existe",() => {
-                const event = new Event( {
-                    id : parseInt(Events[0].id),
-                    name : Events[0].name,
-                    maxPrice : parseInt(Events[0].maxPrice),
-                    startDate : Events[0].startDate,
-                    endDate : Events[0].endDate,
-                    id_owner : parseInt(Events[0].id_owner)      
-                });
-                expect(event.suppEvent()).toBe(true);
-            });
-        });
 });
+
+
+describe("suppEvent", () => {
+    test("supprime un event vue qu'il existe",() => {
+        const event = new Event( {
+            id : parseInt(Events[0].id),
+            name : Events[0].name,
+            maxPrice : parseInt(Events[0].maxPrice),
+            startDate : Events[0].startDate,
+            endDate : Events[0].endDate,
+            id_owner : parseInt(Events[0].id_owner)      
+        });
+        event.eventExist().then((data : any) => {
+            expect(data).toBe(true);
+        })
+    });
+});
+
+
+describe("getClasseEvent", () => {
+
+    test("test du get it de la classe event",() => {
+   const event = new Event( {
+    id : parseInt(Events[0].id),
+    name : Events[1].name,
+    maxPrice : parseInt(Events[1].maxPrice),
+    startDate : Events[1].startDate,
+    endDate : Events[1].endDate,
+    id_owner : parseInt(Events[1].id_owner) 
+      
+    });
+
+    expect(event.id).toBe( parseInt(Events[0].id));
+   });
+
+   test("test du get it de la classe event",() => {
+        const event = new Event( {
+            id : parseInt(Events[0].id),
+            name : Events[1].name,
+            maxPrice : parseInt(Events[1].maxPrice),
+            startDate : Events[1].startDate,
+            endDate : Events[1].endDate,
+            id_owner : parseInt(Events[1].id_owner) 
+        });
+    
+        expect(event.name).toBe(Events[1].name);
+    });
+
+    test("test du get it de la classe event",() => {
+        const event = new Event( {
+         id : parseInt(Events[0].id),
+         name : Events[1].name,
+         maxPrice : parseInt(Events[1].maxPrice),
+         startDate : Events[1].startDate,
+         endDate : Events[1].endDate,
+         id_owner : parseInt(Events[1].id_owner) 
+           
+         });
+     
+         expect(event.maxPrice).toBe(parseInt(Events[1].maxPrice));
+    });
+
+        
+    test("test du get it de la classe event",() => {
+        const event = new Event( {
+         id : parseInt(Events[0].id),
+         name : Events[1].name,
+         maxPrice : parseInt(Events[1].maxPrice),
+         startDate : Events[1].startDate,
+         endDate : Events[1].endDate,
+         id_owner : parseInt(Events[1].id_owner) 
+           
+        });
+     
+         expect(event.startDate).toBe(Events[1].startDate);
+        });
+
+    test("test du get it de la classe event",() => {
+        const event = new Event( {
+            id : parseInt(Events[0].id),
+            name : Events[1].name,
+            maxPrice : parseInt(Events[1].maxPrice),
+            startDate : Events[1].startDate,
+            endDate : Events[1].endDate,
+            id_owner : parseInt(Events[1].id_owner) 
+            
+        });
+        
+        expect(event.endDate).toBe(Events[1].endDate);
+    });
+
+    test("test du get it de la classe event",() => {
+        const event = new Event( {
+            id : parseInt(Events[0].id),
+            name : Events[1].name,
+            maxPrice : parseInt(Events[1].maxPrice),
+            startDate : Events[1].startDate,
+            endDate : Events[1].endDate,
+            id_owner : parseInt(Events[1].id_owner) 
+            
+            });
+        
+        expect(event.suppEvent()).toBe(true);
+    });
+});
+
+
