@@ -25,7 +25,9 @@ export class User {
         return this.#pseudo
     }
 
+    // Creation d'un utilisateur
     create(){
+        // Vérification si les conditions pour créer un utilisateur est correct
         if(this.isValid()){
             addUser(this.#email,this.#mdp,this.#pseudo)
             return true

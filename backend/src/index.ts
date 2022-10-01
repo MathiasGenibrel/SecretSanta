@@ -21,19 +21,6 @@ app.use((_req: Request, res: Response, next: NextFunction) => {
   next();
 });
 
-app.get("/", (_req: Request, res: Response) => {
-  getAllUsers().then((data:any)=>{
-    res.send(data);
-  })
-  
-});
-
-
-
-app.get("/register", (_req: Request, res: Response) => {
-  res.send('register');
-});
-
 app.post("/register", (req: Request, res: Response) => {
   let newUser = new User(req.body.email,req.body.password,req.body.username)
   newUser.isExist().then((data:any)=>{
@@ -49,10 +36,6 @@ app.post("/register", (req: Request, res: Response) => {
       })
     }
   })
-});
-
-app.get("/login", (_req: Request, res: Response) => {
-  res.send('login')
 });
 
 app.post("/login", (req: Request, res: Response) => {
