@@ -67,5 +67,16 @@ Login / Mot de passe  :
 - Mathias@liveCampus.fr / Livecampus2022.fr
 - Valentin@liveCampus.fr / Livecampus2022.fr                    
 - Nicolas@liveCampus.fr / Livecampus2022.fr   
-```                 
-                         
+```
+
+# Exécution des tests
+
+Commande pour éxécuter les tests en backend
+```bash
+docker compose exec -i api npm test
+```
+
+Commande pour éxécuter les tests en frontend
+```bash
+docker compose exec -i web npm test
+```
