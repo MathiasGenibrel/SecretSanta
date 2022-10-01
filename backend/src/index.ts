@@ -18,7 +18,11 @@ app.get("/", (_req: Request, res: Response) => {
 });
 
 app.get("/register", (_req: Request, res: Response) => {
-  let newUser = new User('valenti@hotmail.fr','azerty','co')
+  res.send('register');
+});
+
+app.post("/register", (req: Request, res: Response) => {
+  let newUser = new User(req.body.email,req.body.password,req.body.pseudo)
   newUser.isExist()
   // newUser.create()
   res.send('done');
