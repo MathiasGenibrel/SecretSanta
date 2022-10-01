@@ -15,7 +15,7 @@ npm install -g docker
 # Configuration .env
 
 Dans le dossier racine du projet 
-`` bash 
+`` 
 /.env 
 ``
 ``` bash
@@ -23,7 +23,7 @@ DATABASE="secretsanta"
 ```
 
 Dans le dossier environment du projet 
-`` bash 
+``
 backend/src/environment/.env
 ``
 ``` bash
