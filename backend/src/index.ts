@@ -26,13 +26,23 @@ app.get("/register", (_req: Request, res: Response) => {
 app.get("/login", (_req: Request, res: Response) => {
   getConnect('nicolas@allforweb.fr','azerty').then((data:any) =>{
     if (data){
-      const token = jwt.sign({ user: data}, environment.secretToken);
+      const token = jwt.sign({username: data.pseudo, email: data.email, id: data.id }, environment.secretToken);
       res.json(token);
       /* const decoded = jwt.verify(token, environment.secretToken);
       console.log(decoded)*/
     }
   })
 });
+
+app.post("/login", (req: Request, res: Response) => {
+  getConnect(req.body.email,req.body.password).then((data:any) =>{
+    if (data){
+      const token = jwt.sign({username: data.pseudo, email: data.email, id: data.id }, environment.secretToken);
+      res.json(token);
+    }
+  })
+});
+
 
 app.listen(3000, () => {
   console.log("Server is running on port 3000");
