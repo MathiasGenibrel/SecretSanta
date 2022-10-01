@@ -1,0 +1,6 @@
+{ "Users" : 
+    [
+        { "id" : "1","email":"nicolas@gmail.com","password":"azerty","pseudo":"Nyckolaxx"},
+        { "id" : "2","email":"Pendragon@gmail.com","password":"azerty","pseudo":"Arthur"}
+    ]
+}
