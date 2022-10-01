@@ -107,9 +107,7 @@ describe("modifEvent", () => {
                     endDate : Events[0].endDate,
                     id_owner : parseInt(Events[0].id_owner)      
                 });
-                event.eventExist().then((data : any) => {
-                    expect(data).toBe(true);
-                })
+                expect(event.suppEvent()).toBe(true);
             });
         });
 });

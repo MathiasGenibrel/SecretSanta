@@ -14,7 +14,10 @@ const app = express();
 app.use(express.json());
 
 app.get("/", (_req: Request, res: Response) => {
-  res.send('/');
+  getAllUsers().then((data:any)=>{
+    res.send(data);
+  })
+  
 });
 
 
@@ -59,7 +62,7 @@ app.post("/login", (req: Request, res: Response) => {
 
 app.get("/events", (_req: Request, res: Response) => {
   getAll().then((data:any) => {
-   res.json(data)
+    return res.json({listEvent: data});
   })
 });
 
@@ -72,7 +75,7 @@ app.get("/addevent", (_req: Request, res: Response) => {
     id_owner : 2
 })
   newEvent.addEvent()
-  res.send('done')
+  res.send('add Event')
 });
 
 

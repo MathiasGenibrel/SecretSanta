@@ -26,6 +26,11 @@ describe("User valide", () => {
     expect(user.suppUser()).toBe(true);
   });
 
+  test("GET user email", () => {
+    const user = new User(Users[0].email,Users[0].password,Users[0].pseudo)
+    expect(user.Email).toBe(Users[0].email);
+  });
+
 });
 
 describe("User not valide", () => {

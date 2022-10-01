@@ -85,12 +85,8 @@ export class Event {
     }
 
     suppEvent (){
-        try {
-            this.eventExist()
-            suppEvent(this.#id as any)
-        } catch(error) {
-            throw error
-        }
+        suppEvent(this.#id as any)
+        return true
     }
     
 }
