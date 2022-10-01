@@ -20,14 +20,14 @@ DATABASE="secretsanta"
 ``
 
 Dans le dossier environment du projet backend/src/environment/.env
-`` bash
+``` bash
 SECRET_TOKEN="secrettoken"
 
 HOSTNAME_DB="172.18.0.1"
 DATABASE_DB="secretsanta"
 USER_DB= "root"
 PORT_DB="3307"
-``
+```
 
 # Installation 
 
