@@ -1,8 +1,8 @@
 import { createBrowserRouter } from "react-router-dom";
-import { Landing } from "./components/views/Landing";
+import { Landing } from "./views/Landing";
 
-import { Login } from "./components/views/Login";
-import { Register } from "./components/views/Register";
+import { Login } from "./views/Login";
+import { Register } from "./views/Register";
 
 export const Router = createBrowserRouter([
   {

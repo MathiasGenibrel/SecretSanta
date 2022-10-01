@@ -45,6 +45,10 @@ export class Fetcher {
       body: JSON.stringify(body),
     });
 
+    if (response.status !== 200) {
+      throw new Error(response.statusText);
+    }
+
     return await response.json();
   }
 }

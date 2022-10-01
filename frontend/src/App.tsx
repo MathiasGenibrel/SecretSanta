@@ -2,6 +2,9 @@ import React, { useState } from "react";
 import { RouterProvider } from "react-router-dom";
 import { Fetcher } from "./class/Fetcher";
 
+// Import environment variables
+import { environment } from "./environment/environment";
+
 // Import Context
 import AuthContext from "./context/auth-context";
 import { IAuthResponse } from "./interface/api/auth";
@@ -11,12 +14,11 @@ import { Router } from "./Router";
 
 export const App = () => {
   const [user, setUser] = useState<IAuthResponse | undefined>(undefined);
-  // TODO: Change url of fetcher
-  const User = new Fetcher("https://jsonplaceholder.typicode.com");
+  const UserFetcher = new Fetcher(environment.api.url);
 
   return (
     <AuthContext.Provider
-      value={{ setUser: setUser, user: user, fetcher: User }}
+      value={{ setUser: setUser, user: user, fetcher: UserFetcher }}
     >
       <RouterProvider router={Router} />
     </AuthContext.Provider>
