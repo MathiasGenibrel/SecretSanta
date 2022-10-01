@@ -47,6 +47,7 @@ app.get("/events", (_req: Request, res: Response) => {
   getAll().then((data:any) => {
    res.json(data)
 })
+});
 
 
 app.listen(3000, () => {
