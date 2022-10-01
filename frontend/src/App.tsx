@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import { RouterProvider } from "react-router-dom";
 import { Fetcher } from "./class/Fetcher";
 
 // Import environment variables
@@ -20,7 +19,7 @@ export const App = () => {
     <AuthContext.Provider
       value={{ setUser: setUser, user: user, fetcher: UserFetcher }}
     >
-      <RouterProvider router={Router} />
+      <Router />
     </AuthContext.Provider>
   );
 };
