@@ -1,4 +1,5 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 
 // Import components
 import { Form } from "../components/organism/Form/Form";
@@ -15,14 +16,19 @@ import { ILoginBody } from "../interface/api/auth";
 
 // TODO: Change path of auth function (in submitHandler)
 export const Login = () => {
-  const user = useContext(AuthContext);
+  const userContext = useContext(AuthContext);
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (userContext.user) navigate("/");
+  }, [userContext.user, navigate]);
 
   return (
     <section>
       <Form
         type="login"
         title="Connect to your Account"
-        submitHandler={(data: ILoginBody) => auth(data, "login", user)}
+        submitHandler={(data: ILoginBody) => auth(data, "login", userContext)}
       />
     </section>
   );
