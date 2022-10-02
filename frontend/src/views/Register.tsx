@@ -1,4 +1,5 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 
 // Import context
 import AuthContext from "../context/auth-context";
@@ -12,15 +13,22 @@ import { IRegisterBody } from "../interface/api/auth";
 
 import "./ConnectionForm.css";
 
-// TODO: Change path of auth function (in submitHandler)
 export const Register = () => {
-  const user = useContext(AuthContext);
+  const userContext = useContext(AuthContext);
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (userContext.user) navigate("/");
+  }, [userContext.user, navigate]);
+
   return (
     <section>
       <Form
         type="register"
         title="Create an Account"
-        submitHandler={(data: IRegisterBody) => auth(data, "register", user)}
+        submitHandler={(data: IRegisterBody) =>
+          auth(data, "register", userContext)
+        }
       />
     </section>
   );

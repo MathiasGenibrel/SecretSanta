@@ -8,5 +8,12 @@ export const Input: FunctionComponent<IInputProps> = ({
   schema, // schema is an object with the validation rules
   type = "text",
 }) => {
-  return <input type={type} id={id} {...register(name, schema)} />;
+  return (
+    <input
+      data-testid={`${id}-input-content`}
+      type={type}
+      id={id}
+      {...register(name, schema)}
+    />
+  );
 };
