@@ -27,7 +27,10 @@ export const Form: FunctionComponent<IFormProps> = ({
   } = useForm();
 
   return (
-    <form onSubmit={handleSubmit(submitHandler)}>
+    <form
+      data-testid="test-form-content"
+      onSubmit={handleSubmit(submitHandler)}
+    >
       <h2>{title}</h2>
       {FormContent[type].fields.map((field, index) => {
         return (
