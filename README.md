@@ -75,3 +75,11 @@ Commande pour éxécuter les tests en frontend
 ```bash
 docker compose exec -i web npm test
 ```
+
+## Know Issue
+
+L'application en prod peux avoir des soucis sur la communication avec l'api du fait qu'il manque un certificat SSL, on peut changer celà en modifiant un paramètre navigateur : (Chrome Users)
+`chrome://flags/#block-insecure-private-network-requests`
+Et désactivé le paramètre.
+
+Maintenant l'api devrait fonctionné. 🎉
