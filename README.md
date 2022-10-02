@@ -1,7 +1,7 @@
 # SecretSanta
 Secret Santa for LiveCampus
 
-# Prérequie
+# Prérequis
 Cloner le projet à partir du repository 
 ```bash
 git clone https://github.com/MathiasGenibrel/SecretSanta.git
